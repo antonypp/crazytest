@@ -4,7 +4,7 @@ module Crazytest
     def self.run
       reporter = StandardReporter.new
       result_object = ResultObject.new reporter
-
+      Signal.trap("SIGINT", proc{ result_object.print; exit})
       at_exit do
          tests = TestCase.descendants
          tests.each do |klass|
