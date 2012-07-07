@@ -16,9 +16,9 @@ module Crazytest
       @reporter.print_point :ok
     end
 
-    def fail(error)
+    def fail(error, method)
       @fail_count +=1
-      @fail_result << error
+      @fail_result << [error, method]
       if error.is_a? FailError
         @reporter.print_point :fail
       else

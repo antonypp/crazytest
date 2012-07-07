@@ -10,7 +10,7 @@ module Crazytest
             test = new result_object
             test.send method
           rescue Exception => error
-            result_object.fail error
+            result_object.fail error, test.method(method.to_sym)
           end
         end
       end
