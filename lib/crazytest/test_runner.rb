@@ -4,6 +4,7 @@ module Crazytest
     def self.run
       reporter = StandardReporter.new
       result_object = ResultObject.new reporter
+
       at_exit do
          tests = TestCase.descendants
          tests.each do |klass|

@@ -14,4 +14,6 @@ Gem::Specification.new do |gem|
   gem.name          = "crazytest"
   gem.require_paths = ["lib"]
   gem.version       = Crazytest::VERSION
+
+  gem.add_runtime_dependency "colored"
 end

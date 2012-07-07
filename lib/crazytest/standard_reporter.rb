@@ -4,9 +4,9 @@ module Crazytest
 
     def print_point(result)
       case result
-        when :ok then print '*'
-        when :fail then print 'F'
-        when :error then print 'E'
+        when :ok then print '*'.green
+        when :fail then print 'F'.red
+        when :error then print 'E'.red
       end
     end
 
