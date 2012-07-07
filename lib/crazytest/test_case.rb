@@ -28,7 +28,7 @@ module Crazytest
       end
     end
 
-    def assert_exeption(exp, exception)
+    def assert_exception(exp, exception)
       exp.call
     rescue Exception => e
       if e.is_a? exception
