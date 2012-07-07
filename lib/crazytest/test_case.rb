@@ -1,12 +1,13 @@
 module Crazytest
+  class FailError < RuntimeError; end
 
   class TestCase
 
     class << self
       def run(result_object)
-        test = new result_object
-        test.class.public_instance_methods.grep(/\Atest_.+\z/).each do |method|
+        self.public_instance_methods.grep(/\Atest_.+\z/).each do |method|
           begin
+            test = new result_object
             test.send method
           rescue Exception => error
             result_object.fail error
@@ -23,7 +24,7 @@ module Crazytest
       if exp
         @result_object.ok
       else
-        raise
+        raise FailError.new "expected true, but received #{exp}"
       end
     end
   end

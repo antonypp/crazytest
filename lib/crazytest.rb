@@ -5,6 +5,5 @@ module Crazytest
   autoload "TestCase", "crazytest/test_case"
   autoload "TestRunner", "crazytest/test_runner"
   autoload "ResultObject", "crazytest/result_object"
-  # Your code goes here...
-  Crazytest::TestRunner.run
+  autoload "StandardReporter", "crazytest/standard_reporter"
 end

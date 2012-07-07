@@ -2,13 +2,14 @@ module Crazytest
 
   class TestRunner
     def self.run
-      result_object = Crazytest::ResultObject.new
+      reporter = StandardReporter.new
+      result_object = ResultObject.new reporter
       at_exit do
-         tests = Crazytest::TestCase.descendants
+         tests = TestCase.descendants
          tests.each do |klass|
            klass.run result_object
          end
-         raise result_object.inspect
+         result_object.print
       end
     end
   end

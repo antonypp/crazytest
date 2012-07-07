@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+
+target = ARGV[1]
+
+# set default dir
+unless File.exists? target.to_s
+  target = 'test/'
+end
+
+# check whether the target is Dir or not
+if File.directory? target
+  Dir.new(target).each do |filename|
+    if filename.match /\A.+\.rb\z/
+      require File.expand_path("#{target}#{filename}")
+    end
+  end
+else
+  require File.expand_path(target)
+end
+
+# run our runner
+Crazytest::TestRunner.run
