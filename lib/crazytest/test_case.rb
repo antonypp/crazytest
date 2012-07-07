@@ -27,6 +27,17 @@ module Crazytest
         raise FailError.new "expected true, but received #{exp}"
       end
     end
+
+    def assert_exeption(exp, exception)
+      exp.call
+    rescue Exception => e
+      if e.is_a? exception
+        @result_object.ok
+      else
+        raise FailError.new "expected #{exception}, but received #{e}"
+      end
+    end
+
   end
 
 end
