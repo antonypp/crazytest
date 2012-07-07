@@ -7,11 +7,11 @@ class AllTest < Crazytest::TestCase
   end
 
   def test_assert_fail
-    assert false
+    assert_exception lambda{assert false}, Crazytest::FailError
   end
 
   def test_assert_error
-    assert_exeption lambda{raise(Crazytest::FailError)}, Crazytest::FailError
+    assert_exception lambda{raise(Crazytest::FailError)}, Crazytest::FailError
   end
 
 end
