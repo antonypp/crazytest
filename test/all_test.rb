@@ -1,6 +1,6 @@
 require File.expand_path('test/test_helper')
 
-class Test < Crazytest::TestCase
+class AllTest < Crazytest::TestCase
 
   def test_assert_ok
     assert true
@@ -11,7 +11,7 @@ class Test < Crazytest::TestCase
   end
 
   def test_assert_error
-    assert raise
+    assert_exeption lambda{raise(Crazytest::FailError)}, Crazytest::FailError
   end
 
 end
