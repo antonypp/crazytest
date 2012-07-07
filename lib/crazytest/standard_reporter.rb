@@ -13,12 +13,14 @@ module Crazytest
     def print_report(result_object)
       puts ""
       result_object.fail_result.each do |result|
-        puts "Message: #{result.message}".blue
+        puts "Message: #{result.message}"
         unless result.is_a? FailError
           puts "Trace: #{result.backtrace.join("\n")}"
         end
       end
-      puts "Ok: #{result_object.ok_count}, Failures: #{result_object.fail_count}"
+      puts "Summary".blue.underline
+      puts "Ok      : #{result_object.ok_count}".green
+      puts "Failures: #{result_object.fail_count}".red
     end
   end
 end
